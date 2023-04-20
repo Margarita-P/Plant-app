@@ -5,12 +5,12 @@ function WelcomeScreen({navigation}) {
     return (
         <ImageBackground 
             style={styles.background}
-            source={require('./assets/background.jpg')}
+            source={require('./assets/backicon.jpg')}
         >
             <View style={styles.logoContainer}>
-            <Image style={styles.logo} source={require('./assets/logo.jpg')}/>
-            <Text>Water your plants</Text>
-            <Pressable style={styles.loginBtn}
+            
+            
+            <Pressable style={styles.signinBtn}
                 onPress={() => navigation.navigate('SignIn')}>
                 <Text style= {styles.btntext}>Registruotis</Text>
             </Pressable>
@@ -45,8 +45,8 @@ const styles = StyleSheet.create({
         backgroundColor: 'white'
     },
     logo: {
-        width: 100,
-        height: 100,
+        width: 150,
+        height: 200,
     },
     logoContainer: {
         position: 'absolute',
@@ -62,6 +62,20 @@ const styles = StyleSheet.create({
         justifyContent: "center",
         marginTop: 40,
         backgroundColor: "#DFB79E",
+        position: 'absolute',
+        top: 300
+      },
+
+      signinBtn: {
+        width: 200,
+        borderRadius: 25,
+        height: 50,
+        alignItems: "center",
+        justifyContent: "center",
+        marginTop: 40,
+        backgroundColor: "#DFB79E",
+        position: 'absolute',
+        top: 200
       },
     
       btntext:{
