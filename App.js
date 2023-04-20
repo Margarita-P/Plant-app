@@ -1,86 +1,54 @@
+import { StatusBar } from 'expo-status-bar';
 import React from 'react';
-import { Image, ImageBackground, StyleSheet, Text, View, Button, Pressable} from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import { StyleSheet, Text, View } from 'react-native';
+import Login from './Login';
+import FirstPage from './FirstPage';
+import SecondPage from './SecondPage';
+import WelcomeScreen from './WelcomeScreen';
+import SignIn from './SignIn';
+import { firebase } from './firebase';
 
-function WelcomeScreen({navigation}) {
-    return (
-        <ImageBackground 
-            style={styles.background}
-            source={require('./assets/backicon.jpg')}
-        >
-            <View style={styles.logoContainer}>
-            
-            
-            <Pressable style={styles.signinBtn}
-                onPress={() => navigation.navigate('SignIn')}>
-                <Text style= {styles.btntext}>Registruotis</Text>
-            </Pressable>
-            <Text></Text>
-            <Pressable style={styles.loginBtn}
-                onPress={() => navigation.navigate('Login')}>
-                <Text style= {styles.btntext}>Prisijungti</Text>
-            </Pressable> 
 
-            </View>
-            
-        </ImageBackground>
-    );
+
+
+const Stack = createStackNavigator();
+
+// function MyStack() {
+//   return (
+//     <Stack.Navigator>
+//       <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+//       <Stack.Screen name="FirstPage" component={FirstPage} />
+//       <Stack.Screen name="SecondPage" component={SecondPage} />
+//     </Stack.Navigator>
+//   );
+// }
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name=" " component={WelcomeScreen} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="SignIn" component={SignIn} />
+        <Stack.Screen name="FirstPage" component={FirstPage} />
+        <Stack.Screen name="SecondPage" component={SecondPage} />
+      </Stack.Navigator>
+    </NavigationContainer>
+  );
+
 }
 
-
 const styles = StyleSheet.create({
-    background: {
-        flex: 1,
-        justifyContent: 'space-evenly',
-        alignItems: 'center',
-    },
-    loginButton: {
-        width: '100%',
-        height: 70,
-        backgroundColor: 'black'
-        
-    },
-    registerButton: {
-        width: '100%',
-        height: 70,
-        backgroundColor: 'white'
-    },
-    logo: {
-        width: 150,
-        height: 200,
-    },
-    logoContainer: {
-        position: 'absolute',
-        top: 80,
-        alignItems: 'center'
-    },
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
 
-    loginBtn: {
-        width: 200,
-        borderRadius: 25,
-        height: 50,
-        alignItems: "center",
-        justifyContent: "center",
-        marginTop: 40,
-        backgroundColor: "#DFB79E",
-        position: 'absolute',
-        top: 300
-      },
+  },
 
-      signinBtn: {
-        width: 200,
-        borderRadius: 25,
-        height: 50,
-        alignItems: "center",
-        justifyContent: "center",
-        marginTop: 40,
-        backgroundColor: "#DFB79E",
-        position: 'absolute',
-        top: 200
-      },
-    
-      btntext:{
-        fontSize:20,
-        color: '#F5F5F5'
-      }
-})
-export default WelcomeScreen;
+});
+
+
