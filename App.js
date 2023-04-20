@@ -1,29 +1,54 @@
-
-import { createStackNavigator } from '@react-navigation/stack';
+import { StatusBar } from 'expo-status-bar';
+import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import  React  from 'react';
-import  FirstPage  from './FirstPage';
-import  SecondPage  from './SecondPage';
+import { createStackNavigator } from '@react-navigation/stack';
+import { StyleSheet, Text, View } from 'react-native';
+import Login from './Login';
+import FirstPage from './FirstPage';
+import SecondPage from './SecondPage';
 import WelcomeScreen from './WelcomeScreen';
+import SignIn from './SignIn';
+import { firebase } from './firebase';
+
 
 
 
 const Stack = createStackNavigator();
 
-function MyStack() {
-  return (
-    <Stack.Navigator>
-    <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
-      <Stack.Screen name="FirstPage" component={FirstPage} />
-      <Stack.Screen name="SecondPage" component={SecondPage} />
-    </Stack.Navigator>
-  );
-}
+// function MyStack() {
+//   return (
+//     <Stack.Navigator>
+//       <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+//       <Stack.Screen name="FirstPage" component={FirstPage} />
+//       <Stack.Screen name="SecondPage" component={SecondPage} />
+//     </Stack.Navigator>
+//   );
+// }
 
 export default function App() {
   return (
     <NavigationContainer>
-      <MyStack />
+      <Stack.Navigator>
+        <Stack.Screen name="WelcomeScreen" component={WelcomeScreen} />
+        <Stack.Screen name="Login" component={Login} />
+        <Stack.Screen name="SignIn" component={SignIn} />
+        <Stack.Screen name="FirstPage" component={FirstPage} />
+        <Stack.Screen name="SecondPage" component={SecondPage} />
+      </Stack.Navigator>
     </NavigationContainer>
-  )
+  );
+
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+
+  },
+
+});
+
+
