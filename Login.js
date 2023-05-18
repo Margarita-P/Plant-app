@@ -22,7 +22,7 @@ export default function Login({ navigation }) {
     .then((userCredentials) => {
         // Signed in 
         const user = userCredentials.user;
-        navigation.navigate("FirstPage");
+        navigation.navigate("Visi augalai");
         // ...
       })
       .catch(error => alert(error.message))
