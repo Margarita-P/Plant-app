@@ -11,7 +11,7 @@ const plantData = [
     id: 2,
     name: 'Aglaonema',
     image: require('./assets/plants/aglaonema.jpg'),
-    description: 'Krūmo formos gėlė, ilgai žydi ir suformuoja vaisius',
+    description: 'Krūmo formos gėlė, ilgai žydi ir suformuoja vaisius.',
     wateringInstructions: 'Nuo pavasario iki rudens augalą būtina laistyti gausiai, žiemą laistymas suretinamas iki vidutinio. Laistyti gėlę reikia tik minkštu ir šiltu vandeniu, kuris būna nusistovėjęs kelias dienas kambario temperatūroje.',
     lightRequirements: 'Aglaonema mėgsta gerą apšvietimą. Vasarą, karščiausiomis dienos valandomis gėlę reikia apsaugoti nuo tiesioginių saulės spindulių.  Žiemą gėlei reikalingas ypač ryškus ir intensyvus apšvietimas.',
   },
