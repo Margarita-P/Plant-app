@@ -4,7 +4,7 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StyleSheet, Text, View } from 'react-native';
 import Login from './Login';
-import FirstPage from './FirstPage';
+import VisiAugalai from './VisiAugalai';
 import SecondPage from './SecondPage';
 import WelcomeScreen from './WelcomeScreen';
 import SignIn from './SignIn';
@@ -32,7 +32,7 @@ export default function App() {
         <Stack.Screen name=" " component={WelcomeScreen} />
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="SignIn" component={SignIn} />
-        <Stack.Screen name="FirstPage" component={FirstPage} />
+        <Stack.Screen name="Visi augalai" component={VisiAugalai} />
         <Stack.Screen name="SecondPage" component={SecondPage} />
       </Stack.Navigator>
     </NavigationContainer>
