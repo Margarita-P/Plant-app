@@ -22,7 +22,7 @@ export default function Signup({ navigation }) {
         // Signed in 
         validateEmail();
         const user = userCredentials.user;
-        navigation.navigate("FirstPage");
+        navigation.navigate("Visi augalai");
         // ...
       })
       .catch(error => alert(error.message))
