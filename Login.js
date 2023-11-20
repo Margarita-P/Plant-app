@@ -1,9 +1,11 @@
+Gabija Gleiznyte
 import { StatusBar } from "expo-status-bar"
-import { signInWithEmailAndPassword } from "firebase/auth";
+//imprt { signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
-import { Pressable } from "react-native";
-import {StyleSheet,Text,View,Image,TextInput,Button, Alert} from "react-native";
-import {getAuth, sendPasswordResetEmail} from "firebase/auth";
+//imprt {  } from "react-native";
+import {StyleSheet,Pressable,Text,View,TextInput,Alert} from "react-native";
+import {getAuth, signInWithEmailAndPassword, sendPasswordResetEmail} from "firebase/auth";
+import PropTypes from 'prop-types'
 
 export const validateEmail = (email) => {
   const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -17,24 +19,19 @@ export default function Login({ navigation }) {
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    auth = getAuth();
+    getAutentification();
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredentials) => {
         // Signed in 
-        const user = userCredentials.user;
+        //const user = userCredentials.user;
         navigation.navigate("FirstPage");
         // ...
       })
       .catch(error => alert(error.message))
   }
 
-  const forgotpassword = () => {
-    auth = getAuth();    
-    sendPasswordResetEmail(auth,email)
-    .then(() => {    
-      Alert.alert('Slaptažodžio atnaujinimas','Slaptažodžio atnaujinimas išsiųstas nurodytu elektroniniu paštu');
-    })
-    .catch(error => alert(error.message))
+   const getAutentification = () => {
+    auth = getAuth();   
   }
 
   return (
@@ -66,17 +63,50 @@ export default function Login({ navigation }) {
         />
 
       </View>
-      <Pressable onPress={forgotpassword}>
-        <Text style={styles.forgot_button}>Pamiršai slaptažodį?</Text>
-      </Pressable>
       <Pressable style={styles.loginBtn} onPress={handleLogin}>
         <Text style= {styles.btntext}>Prisijungti</Text>
-        </Pressable>
+        </Pressable> 
+      
     </View>
 
   );
 
 }
+
+export function ForgotPassword({ onPasswordReset }) {
+  const forgotpassword = () => {
+    getAutentification();
+    sendPasswordResetEmail(auth, email)
+      .then(() => {
+        onPasswordReset();
+        Alert.alert(
+          'Slaptažodžio atnaujinimas',
+          'Slaptažodžio atnaujinimas išsiųstas nurodytu elektroniniu paštu'
+        );
+      })
+      .catch((error) => alert(error.message));
+  };
+
+  return (
+    <View style={styles.container}>
+    <Pressable onPress={forgotpassword}>
+        <Text style={styles.forgot_button}>Pamiršai slaptažodį?</Text>
+      </Pressable>
+      
+      
+      </View> 
+      );
+  }
+
+Login.propTypes = {
+  navigation: PropTypes.object.isRequired,
+  navigate: PropTypes.object.isRequired,
+}
+
+ForgotPassword.propTypes = {
+  onPasswordReset: PropTypes.object.isRequired
+}
+
 
 const styles = StyleSheet.create({
   container: {
